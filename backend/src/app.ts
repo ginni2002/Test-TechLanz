@@ -2,6 +2,8 @@ import express, { Express } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import rateLimit from "express-rate-limit";
+import { errorHandler } from "./middlewares/error.middleware";
+import fileRoutes from "./routes/file.routes";
 
 const app: Express = express();
 
@@ -18,9 +20,18 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
+// Static file serving
+app.use("/uploads", express.static("uploads"));
+
+// Routes
+app.use("/api/files", fileRoutes);
+
 // Health check route
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok" });
 });
+
+//Error handling middleware
+app.use(errorHandler);
 
 export default app;

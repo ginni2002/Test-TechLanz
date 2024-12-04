@@ -6,6 +6,8 @@ if (!process.env.MONGODB_URI) {
   throw new Error("MONGODB_URI is not defined in environment variables");
 }
 
+export type AllowedFileType = "image/jpeg" | "image/png" | "application/pdf";
+
 export const config = {
   port: process.env.PORT || 5000,
   mongodb: {
@@ -16,5 +18,9 @@ export const config = {
     key: process.env.SUPABASE_KEY,
   },
   fileSize: 5 * 1024 * 1024,
-  allowedFileTypes: ["image/jpeg", "image/png", "application/pdf"] as const,
+  allowedFileTypes: [
+    "image/jpeg",
+    "image/png",
+    "application/pdf",
+  ] as AllowedFileType[],
 };
