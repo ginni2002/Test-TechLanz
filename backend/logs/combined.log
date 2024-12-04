@@ -1,0 +1,14 @@
+2024-12-04T12:38:44.907Z [info]: Starting cloud delete for file: 5923ba7ca139f21405ee7dcf2a283b77.jpg
+2024-12-04T12:38:56.403Z [info]: Successfully deleted file from cloud: 5923ba7ca139f21405ee7dcf2a283b77.jpg
+2024-12-04T12:54:56.488Z [info]: Starting cloud upload for file: 59d6bfefebc35cabd61a756906d26aef.jpg
+2024-12-04T12:55:08.841Z [info]: Successfully uploaded file to cloud: 59d6bfefebc35cabd61a756906d26aef.jpg
+2024-12-04T12:55:08.842Z [info]: Creating file record: 59d6bfefebc35cabd61a756906d26aef.jpg
+2024-12-04T12:55:08.868Z [info]: File record created successfully: 6750512c59f29c7f4a339a15
+2024-12-04T13:23:58.542Z [info]: Creating file record: a5b2fb38d37b4154d992c776b4f7a2e8.jpg
+2024-12-04T13:23:58.570Z [info]: File record created successfully: 675057ee298bca187beae6a8
+2024-12-04T13:24:06.697Z [info]: Starting cloud delete for file: 59d6bfefebc35cabd61a756906d26aef.jpg
+2024-12-04T13:24:18.041Z [info]: Successfully deleted file from cloud: 59d6bfefebc35cabd61a756906d26aef.jpg
+2024-12-04T13:24:50.673Z [info]: Starting cloud upload for file: 354fa07244eb3360604a32a1950a8f02.jpg
+2024-12-04T13:25:02.922Z [info]: Successfully uploaded file to cloud: 354fa07244eb3360604a32a1950a8f02.jpg
+2024-12-04T13:25:02.923Z [info]: Creating file record: 354fa07244eb3360604a32a1950a8f02.jpg
+2024-12-04T13:25:02.951Z [info]: File record created successfully: 6750582e298bca187beae6af
