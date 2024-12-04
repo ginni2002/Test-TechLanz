@@ -2,6 +2,7 @@ import fs from "fs";
 import { supabase } from "../utils/supabase";
 import { AppError } from "../utils/errors";
 import fetch from "node-fetch";
+import { logger } from "../utils/logger";
 
 export class StorageService {
   private static readonly BUCKET_NAME = "files";
@@ -11,6 +12,7 @@ export class StorageService {
     filename: string
   ): Promise<string> {
     try {
+      logger.info(`Starting cloud upload for file: ${filename}`);
       const fileBuffer = fs.readFileSync(filePath);
 
       //   console.log("Attempting to upload to bucket:", this.BUCKET_NAME);
@@ -59,20 +61,18 @@ export class StorageService {
         .from(this.BUCKET_NAME)
         .getPublicUrl(data.path);
 
-      console.log("Generated public URL:", urlData.publicUrl);
+      logger.info(`Successfully uploaded file to cloud: ${filename}`);
 
       return urlData.publicUrl;
     } catch (error) {
-      console.error("Detailed error:", error);
-
-      if (error instanceof AppError) throw error;
-      throw new AppError(500, `Error uploading file to cloud storage:${error}`);
+      logger.error(`Cloud upload failed for ${filename}:`, error);
+      throw error;
     }
   }
 
   static async deleteFromCloud(filename: string): Promise<void> {
     try {
-      console.log("Starting delete process for:", filename);
+      logger.info(`Starting cloud delete for file: ${filename}`);
 
       const { error } = await supabase.storage
         .from(this.BUCKET_NAME)
@@ -86,11 +86,10 @@ export class StorageService {
         );
       }
 
-      console.log("File deleted successfully");
+      logger.info(`Successfully deleted file from cloud: ${filename}`);
     } catch (error) {
-      console.error("Delete error:", error);
-      if (error instanceof AppError) throw error;
-      throw new AppError(500, "Error deleting file from cloud storage");
+      logger.error(`Cloud delete failed for ${filename}:`, error);
+      throw error;
     }
   }
 }
